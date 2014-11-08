@@ -17,4 +17,10 @@ Groups.attachSchema(new SimpleSchema({
       return Meteor.userId();
     }
   },
+  members: {
+    type: Object,
+
+  }
 }));
+
+Members = new Mongo.Collection("members");
