@@ -1,7 +1,7 @@
 <template name="home_logged_in">
     <div class="cube-preview" style="-webkit-filter: hue-rotate({{hue}}deg);"></div>
     <div id="dashboard">
-      <span class="current-usage">250 W</span>
+      <span class="current-usage">{{currentUsage}} W</span>
       <canvas class="chart" width="400" height="400"></canvas>
     </div>
 </template>
