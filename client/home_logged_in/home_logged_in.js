@@ -30,7 +30,11 @@ Template.home_logged_in.rendered = function() {
 }
 
 var data = function() {
-  var data = property(Energy.findOne({historicaldata: true}), 'content.data');
+  var userId = property(Meteor.user(), 'profile.mpare');
+  
+  userId = 1; // user 1 by default XXX
+
+  var data = property(Energy.findOne({userId: userId, historicaldata: true}), 'content.data');
   chartData = _.last(data || [], 8000); // last day usage per 10 seconds
   chartData = _.map(chartData, function(d) { return parseInt(d.value); });
   
