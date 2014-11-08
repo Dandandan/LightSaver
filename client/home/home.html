@@ -1,13 +1,13 @@
 <template name="home">
-  <div class="container">
-      {{#if currentUser}}
-        {{>home_logged_in}}
-      {{else}}
-        <div class="jumbotron">
-            <h1>LightSaver</h1>
-            <p>LightSaver is a smarter way to save energy.</p>
-            <p><a href="login" class="btn btn-primary btn-lg">Login</a></p>
-        </div>
-      {{/if}}
+  {{#if currentUser}}
+    {{>home_logged_in}}
+  {{else}}
+    <div class="container">
+      <div class="jumbotron">
+          <h1>LightSaver</h1>
+          <p>LightSaver is a smarter way to save energy.</p>
+          <p><a href="login" class="btn btn-primary btn-lg">Login</a></p>
+      </div>
     </div>
+  {{/if}}
 </template>

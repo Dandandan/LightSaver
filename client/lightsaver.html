@@ -11,36 +11,33 @@
 </body>
 
 <template name="main_layout">
-    {{> header}} {{> yield}}
+    {{#if currentUser}} {{> header}} {{/if}} {{> yield}}
 </template>
 
 <template name="header">
-    <div class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header pull-left">
             <a class="navbar-brand" href="/">
- LightSaver</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="badges">
-            My badges
+                <i class="mdi-navigation-arrow-back"></i>
             </a>
-                </li>
+        </div>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="settings">
-            {{> avatar size='small' type='circle' user=currentUser}}
-            </a>
-                </li>
-            </ul>
-        </div>
+        <ul class="navbar-header nav navbar-nav">
+            <li>
+                <a href="badges">
+                    <i class="mdi-action-stars"></i>
+                </a>
+            </li>
+            <li>
+                <a href="groups">
+                    <i class="mdi-social-people"></i>
+                </a>
+            </li>
+            <li>
+                <a href="settings">
+                    {{> avatar size='small' type='circle' user=currentUser}}
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
