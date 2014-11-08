@@ -14,7 +14,6 @@ Template.home_logged_in.rendered = function() {
 
   var makeChart = function() {
     var d = data();
-    console.log(d.length)
     myLineChart = new Chart(ctx).Line(d, {
       showScale: false,
       showTooltips: false,
@@ -45,12 +44,12 @@ var data = function() {
   chartData = _.each(chartData, function(e) {
     avg.push(e);
     if (avg.length >= 180) {
-      result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0));
+      result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0) / 180);
       avg = [];
     }
   });
   if (avg.length > 0)
-    result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0));
+    result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0) / avg.length);
 
   return {
       labels: _.range(result.length),
