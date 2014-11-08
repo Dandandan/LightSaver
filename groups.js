@@ -16,10 +16,6 @@ Groups.attachSchema(new SimpleSchema({
     autoValue: function() {
       return Meteor.userId();
     }
-  },
-  members: {
-    type: Object,
-
   }
 }));
 
