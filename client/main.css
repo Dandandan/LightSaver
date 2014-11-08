@@ -1,3 +1,17 @@
-body, html {
-    background:white;
+.navbar {
+    height:60px;
+}
+
+.navbar i {
+    font-size:2em;
+}
+.navbar i:hover {
+    color:white;
+}
+
+.nav li {
+    float:left;
+}
+li.navbar-nav {
+    margin:0;
 }
