@@ -1,0 +1,11 @@
+<template name="home">
+  <div class="container">
+      <h1>LightSaver</h1>
+
+      {{#if currentUser}}
+        {{>home_logged_in}}
+      {{else}}
+        {{> atForm}}
+      {{/if}}
+  </div>
+</template>
