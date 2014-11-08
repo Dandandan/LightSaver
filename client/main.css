@@ -5,14 +5,32 @@ body, html {
   width: 100%;
   height: 100%;
 }
+body {
+  padding-top: 60px;
+}
 body .container {
   margin: 0px;
   padding: 0px;
   width: 100%;
   height: 100%;
 }
+
 .navbar {
   position: absolute;
   width: 100%;
   z-index: 3;
+  height:60px;
+}
+.navbar i {
+    font-size:2em;
+}
+.navbar i:hover {
+    color:white;
+}
+
+.nav li {
+    float:left;
+}
+ul.navbar-nav {
+    margin:0;
 }
