@@ -86,7 +86,7 @@ _.each(livedata.livedata, function(v,i) {
 
 p1_power=p1_power+p2_power+p3_power+p4_power+p5_power;
 
-console.log(p2_power)
+//console.log(p2_power)
 // Energy.update({
 //  userid:  2 
 //     },{
@@ -130,7 +130,8 @@ _.each(livedata.livedata, function(v,i) {
 
 Meteor.setInterval( function(){
  var histdata = HTTP.get("https://live.mpare.net/data.json?source=539").data;
-
+console.log(histdata)
+    
        Energy.update({
   userid:  1 , historicaldata : true
      },{
