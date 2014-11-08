@@ -1,0 +1,8 @@
+.list-group .list-group-item .row-action-primary i.complete,
+.list-group .list-group-item .row-action-primary:hover i{
+    background:#0f9d58;
+}
+
+i {
+    transition: background 0.2s ease;
+}
