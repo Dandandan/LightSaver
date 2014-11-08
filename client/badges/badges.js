@@ -1,14 +1,22 @@
 var badges = [{
-        name: "7 days Ecothon",
+        name: "Ecothon (7 days)",
         description: "Saving at least 20% energy for 7 days"
     },
     {
-        name: "5 days Ecothon",
+        name: "Ecothon (5 days)",
         description: "Saving at least 20% energy for 2 days"
     },
     {
-        name: "5 days Ecothon",
+        name: "Ecothon (2 days)",
         description: "Saving at least 20% energy for 2 days"
+    },
+    {
+        name: "Down to Zero! (1 hour)",
+        description: "Net zero energy for one hour"
+    },
+    {
+        name: "Down to Zero! (2 hours)",
+        description: "Net zero energy for two hours"
     }
 ]
 
