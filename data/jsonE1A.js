@@ -1,4 +1,4 @@
-{profiel[{"ptype":"E1A","Datumtijd":"1-1-2014 0:00","value":"0.00003990"},
+var profielE1A={"profiel":[{"ptype":"E1A","Datumtijd":"1-1-2014 0:00","value":"0.00003990"},
 {"ptype":"E1A","Datumtijd":"1-1-2014 0:15","value":"0.00003876"},
 {"ptype":"E1A","Datumtijd":"1-1-2014 0:30","value":"0.00003713"},
 {"ptype":"E1A","Datumtijd":"1-1-2014 0:45","value":"0.00003573"},
