@@ -14,6 +14,7 @@ Template.home_logged_in.rendered = function() {
 
   var makeChart = function() {
     var d = data();
+    console.log(d.length)
     myLineChart = new Chart(ctx).Line(d, {
       showScale: false,
       showTooltips: false,
@@ -34,7 +35,7 @@ var data = function() {
   
   userId = 1; // user 1 by default XXX
 
-  var data = property(Energy.findOne({userId: userId, historicaldata: true}), 'content.data');
+  var data = property(Energy.findOne({userid: userId, historicaldata: true}), 'content.data');
   chartData = _.last(data || [], 8000); // last day usage per 10 seconds
   chartData = _.map(chartData, function(d) { return parseInt(d.value); });
   
