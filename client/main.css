@@ -12,6 +12,6 @@
 .nav li {
     float:left;
 }
-li.navbar-nav {
+ul.navbar-nav {
     margin:0;
 }

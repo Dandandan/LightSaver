@@ -11,7 +11,7 @@
 </body>
 
 <template name="main_layout">
-    {{> header}} {{> yield}}
+    {{#if currentUser}} {{> header}} {{/if}} {{> yield}}
 </template>
 
 <template name="header">
@@ -22,24 +22,22 @@
             </a>
         </div>
 
-        <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="badges">
-                        <i class="mdi-action-stars"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="groups">
-                        <i class="mdi-social-people"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="settings">
+        <ul class="navbar-header nav navbar-nav">
+            <li>
+                <a href="badges">
+                    <i class="mdi-action-stars"></i>
+                </a>
+            </li>
+            <li>
+                <a href="groups">
+                    <i class="mdi-social-people"></i>
+                </a>
+            </li>
+            <li>
+                <a href="settings">
                     {{> avatar size='small' type='circle' user=currentUser}}
                 </a>
-                </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
