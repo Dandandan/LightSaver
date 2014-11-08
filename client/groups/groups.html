@@ -2,8 +2,26 @@
     <div class="container well">
 
         <h2>Groups at a place near you</h2>
-        <a href="#" class="btn btn-success btn-fab btn-raised mdi-social-group-add">
-            <div class="ripple-wrapper"></div>
-        </a>
+        <div class="list-group">
+            {{#each groups}}
+            <a href="group/{{_id}}">
+                <div class="list-group-item">
+                    <div class="row-action-primary">
+                        <i class="mdi-social-group"></i>
+                    </div>
+                    <div class="row-content">
+                        <div class="least-content">5 members</div>
+                        <h4 class="list-group-item-heading">{{name}}</h4>
+                        <p class="list-group-item-text">{{description}}</p>
+                    </div>
+                </div>
+                <div class="list-group-separator"></div>
+            </a>
+        {{/each}}
+    </div>
+
+    <a href="add_group" class="btn btn-success btn-fab btn-raised mdi-social-group-add btn-action">
+        <div class="ripple-wrapper"></div>
+    </a>
     </div>
 </template>

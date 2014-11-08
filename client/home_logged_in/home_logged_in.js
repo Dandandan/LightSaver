@@ -7,7 +7,7 @@ Template.home_logged_in.rendered = function() {
 
   var resize = function() {
     canvas.width = $(window).width();
-    canvas.height = $(window).height() * 0.3;  
+    canvas.height = $(window).height() * 0.3;
     $canvas.css({width: canvas.width, height: canvas.height});
   }
 

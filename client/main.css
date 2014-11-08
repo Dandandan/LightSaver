@@ -28,3 +28,7 @@ body {
 ul.navbar-nav {
     margin:0;
 }
+
+.btn-action {
+    float:right;
+}
