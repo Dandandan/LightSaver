@@ -9,7 +9,7 @@ Template.home_logged_in.rendered = function() {
     canvas.width = $(window).width();
     canvas.height = $(window).height() * 0.8;
     $canvas.css({width: canvas.width, height: canvas.height});
-    makeChart(); 
+    makeChart();
   }
 
   var makeChart = function() {
@@ -26,7 +26,7 @@ Template.home_logged_in.rendered = function() {
 
   $(window).resize(resize);
   resize();
-  
+
 }
 
 var data = function() {
@@ -75,7 +75,7 @@ var data = function() {
               data: [28, 48, 40, 19, 86, 27, 90]
           }
       ]
-  };  
+  };
 }
 
 Template.home_logged_in.helpers({

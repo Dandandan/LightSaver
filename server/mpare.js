@@ -3,7 +3,7 @@ Meteor.startup(function(){
 // instantaneous power and gas usage for user 1
 Meteor.setInterval( function(){
  var livedata = HTTP.get("https://live.mpare.net/live.json?user=1").data;
- var p1_power 
+ var p1_power
  var P1_Gas
 
 _.each(livedata.livedata, function(v,i) {
@@ -12,26 +12,26 @@ _.each(livedata.livedata, function(v,i) {
         return;
     }
 });
-    
+
 _.each(livedata.livedata, function(v,i) {
     if (v.internalName == "P1_Gas") {
         P1_Gas= v.value
         return;
     }
 });
-    
+
 // Energy.update({
-//  userid:  1 
+//  userid:  1
 //     },{
  // $set: {content: livedata}},
  //    {upsert:true});
-    
+
     Energy.update({
   userid:  1 , internalName: "p1_power"
      },{
   $set: {content: p1_power}},
      {upsert:true});
-    
+
      Energy.update({
   userid:  1 , internalName: "P1_Gas"
      },{
@@ -43,11 +43,11 @@ _.each(livedata.livedata, function(v,i) {
 
 Meteor.setInterval( function(){
  var livedata = HTTP.get("https://live.mpare.net/live.json?user=2").data;
- var p1_power 
+ var p1_power
  var p2_power
  var p3_power
- var p4_power 
- var p5_power 
+ var p4_power
+ var p5_power
 
 _.each(livedata.livedata, function(v,i) {
     if (v.internalName == "imm_p_1") {
@@ -62,7 +62,7 @@ _.each(livedata.livedata, function(v,i) {
         return;
     }
 });
-    
+
 _.each(livedata.livedata, function(v,i) {
     if (v.internalName == "imm_p_3") {
         p3_power= v.value
@@ -88,11 +88,11 @@ _.each(livedata.livedata, function(v,i) {
 // p1_power=Float.valueOf(p1_power)+Float.valueOf(p2_power)+Float.valueOf(p3_power)+Float.valueOf(p4_power)+Float.valueOf(p5_power);
 console.log(p1_power)
 // Energy.update({
-//  userid:  2 
+//  userid:  2
 //     },{
 //  $set: {content: livedata}},
 //     {upsert:true});
-    
+
     Energy.update({
   userid:  2 , internalName: "p1_power"
      },{
@@ -111,13 +111,13 @@ _.each(livedata.livedata, function(v,i) {
         return;
     }
 });
-    
+
 // Energy.update({
-//  userid:  5 
+//  userid:  5
 //     },{
 //  $set: {content: livedata}},
 //     {upsert:true});
-    
+
  Energy.update({
    userid:  5 , internalName: "p1_power"
      },{
@@ -136,7 +136,7 @@ Meteor.setInterval( function(){
      },{
   $set: {content: histdata}},
      {upsert:true});
-    
-} ,10000); 
+
+} ,10000);
 
 });
