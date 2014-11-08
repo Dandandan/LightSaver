@@ -1,6 +1,7 @@
-// instantaneous power and gas usage for user 1
-
 Meteor.startup(function(){
+
+// instantaneous power and gas usage for user 1
+    
 Meteor.setInterval( function(){
  var livedata = HTTP.get("https://live.mpare.net/live.json?user=1").data;
  var p1_power 
@@ -66,41 +67,43 @@ _.each(livedata.livedata, function(v,i) {
 } ,1000)
 
 // instantaneous power of user 5
+
+Meteor.setInterval( function(){
+ var livedata = HTTP.get("https://live.mpare.net/live.json?user=5").data;
+ var p1_power 
+
+_.each(livedata.livedata, function(v,i) {
+    if (v.internalName == "p1_power") {
+        p1_power= v.value
+        return;
+    }
+});
+    
+// Energy.update({
+//  userid:  5 
+//     },{
+//  $set: {content: livedata}},
+//     {upsert:true});
     
  Energy.update({
-  userid:  5 
+   userid:  5 , internalName: "p1_power"
      },{
-  $set: {content: livedata}},
-     {upsert:true});
-    
-    Energy.update({
-  userid:  5 , internalName: "p1_power"
-     },{
-  $set: {content: p1_power}},
+    $set: {content: p1_power}},
      {upsert:true});
 
-
+});
 
 //historical data of user 1
 
 Meteor.setInterval( function(){
  var histdata = HTTP.get("https://live.mpare.net/data.json?source=539").data;
 
-_.each(histdata.data, function(v,i) {
-    if (v.ts >) {
-        p1_power= v.value
-        return;
-    }
-});
+       Energy.update({
+  userid:  5 , internalName: "p1_power"
+     },{
+  $set: {content: p1_power}},
+     {upsert:true});
     
-
-} ,10000)    
-
-});
-
+} ,10000); 
 
 });
-
-
-
-
