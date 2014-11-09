@@ -52,7 +52,6 @@ Router.route('/badges', function () {
 
 Template.badges.events({
     'click .challenge-badge': function () {
-        console.log(Meteor.userId() + this.name);
         var u = {};
         u['profile.completed.' + this.name] = {
             date: Date.now()
@@ -60,15 +59,26 @@ Template.badges.events({
         Meteor.users.update(Meteor.userId(), {
             $set: u, $inc : {'profile.score' : this.bonus}
         });
+        var id = Color.findOne({field: "effect"})._id;
+         Color.update(id, {$set: {value: "blink"}});
+
+        var cid = Color.findOne({field: "color"})._id;
+        var cval = Color.findOne({field: "color"}).value;
+        Color.update(cid, {$set: {value: "#0f9d58"}});
+        Session.set("color", "#0f9d58");
+         Meteor.setTimeout(function() {
+             Color.update(id, {$set: {value: "normal"}});
+             Color.update(cid, {$set: {value: cval}})
+
+            Session.set("color", cval);
+         }, 10000);
     }
 });
 
 Template.badges.helpers({
     'completed': function () {
         var p = Meteor.user();
-        console.log(this.name);
         if (p && p.profile && p.profile.completed && p.profile.completed[this.name]) {
-            console.log(p.profile.completed[this.name].date);
             return moment(p.profile.completed[this.name].date).fromNow();
         }
     }
