@@ -34,9 +34,15 @@ ul.navbar-nav {
 i.mdi-image-wb-incandescent {
     margin-top:-5px;
     display:block;
+    color:#FFB90F;
 }
 .score {
-font-size: 1.1em;
-margin-top: -4px;
-display: block;
+    font-size: 1.1em;
+    margin-top: -4px;
+    display: block;
+}
+.backicon {
+    width:36px;
+    height:36px;
+    display:block;
 }
