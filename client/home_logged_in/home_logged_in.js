@@ -17,6 +17,7 @@ Template.home_logged_in.rendered = function() {
     myLineChart = new Chart(ctx).Line(d, {
       showScale: false,
       showTooltips: false,
+      scaleShowLabels: false,
     });
   }
 
@@ -35,7 +36,8 @@ var data = function() {
   userId = 1; // user 1 by default XXX
 
 
-  var fromTimestamp = moment().unix() - 24*60*60;
+  var fromTimestamp = moment().unix() - 24*60*60 * 2;
+  var toTimestamp = moment().unix() - 24*60*60;
 
 
 
@@ -43,7 +45,7 @@ var data = function() {
 
   var data = property(Energy.findOne({userid: userId, historicaldata: true}), 'content.data');
   chartData = _.last(data || [], 8000); // last day usage per 10 seconds
-  chartData = _.filter(chartData, function(d) { return d.ts > fromTimestamp; });
+  chartData = _.filter(chartData, function(d) { return d.ts > fromTimestamp && d.ts < toTimestamp; });
   chartData = _.map(chartData, function(d) { return parseInt(d.value); });
 
   
@@ -69,7 +71,7 @@ var data = function() {
   var zipEntry = _.findWhere(standaardjaarverbruik.liander, {POSTCODE_VAN: zipcode});
   var yearUsage = zipEntry.SJV;
   var chartData2 = calculateOpenDataUsage(profielE1A.profiel, yearUsage);
-  chartData2 = _.filter(chartData2, function(entry) { return entry.ts > fromTimestamp; });
+  chartData2 = _.filter(chartData2, function(entry) { return entry.ts > fromTimestamp && entry.ts < toTimestamp; });
   chartData2 = _.pluck(chartData2, 'value');
 
   var result2 = [];
