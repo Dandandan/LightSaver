@@ -14,7 +14,6 @@ Template.home_logged_in.rendered = function() {
 
   var makeChart = function() {
     var d = data();
-    console.log(d.length)
     myLineChart = new Chart(ctx).Line(d, {
       showScale: false,
       showTooltips: false,
@@ -35,25 +34,58 @@ var data = function() {
   
   userId = 1; // user 1 by default XXX
 
+
+  var fromTimestamp = moment().unix() - 24*60*60;
+
+
+
+  // live mpare usage
+
   var data = property(Energy.findOne({userid: userId, historicaldata: true}), 'content.data');
   chartData = _.last(data || [], 8000); // last day usage per 10 seconds
+  chartData = _.filter(chartData, function(d) { return d.ts > fromTimestamp; });
   chartData = _.map(chartData, function(d) { return parseInt(d.value); });
+
   
-  // take average of every 180 entries
+  // take average of every 180 entries (30 minutes)
   var result = [];
   var avg = [];
   chartData = _.each(chartData, function(e) {
     avg.push(e);
     if (avg.length >= 180) {
-      result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0));
+      result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0) / avg.length);
       avg = [];
     }
   });
   if (avg.length > 0)
-    result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0));
+    result.push(_.reduce(avg, function(memo, num){ return memo + num; }, 0) / avg.length);
 
+
+
+
+  // open data usage of zipcode
+
+  var zipcode = '1011AJ';
+  var zipEntry = _.findWhere(standaardjaarverbruik.liander, {POSTCODE_VAN: zipcode});
+  var yearUsage = zipEntry.SJV;
+  var chartData2 = calculateOpenDataUsage(profielE1A.profiel, yearUsage);
+  chartData2 = _.filter(chartData2, function(entry) { return entry.ts > fromTimestamp; });
+  chartData2 = _.pluck(chartData2, 'value');
+
+  var result2 = [];
+  var avg2 = [];
+  chartData2 = _.each(chartData2, function(e) {
+    avg2.push(e);
+    if (avg2.length >= 2) {
+      result2.push(_.reduce(avg2, function(memo, num){ return memo + num; }, 0) / avg2.length);
+      avg2 = [];
+    }
+  });
+  if (avg2.length > 0)
+    result2.push(_.reduce(avg2, function(memo, num){ return memo + num; }, 0) / avg2.length);
+  
   return {
-      labels: _.range(result.length),
+      labels: _.range(48),
       datasets: [
           {
               label: "My First dataset",
@@ -73,7 +105,7 @@ var data = function() {
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
               pointHighlightStroke: "rgba(151,187,205,1)",
-              data: [28, 48, 40, 19, 86, 27, 90]
+              data: result2
           }
       ]
   };
