@@ -1,14 +1,14 @@
 <template name="group">
     <div class="container well">
         <h2>{{group.name}}</h2>
+        <a id="join" title="Join Group" class="btn btn-success btn-fab btn-raised mdi-social-person-add btn-action"></a>
         <p>
             {{group.description}}
         </p>
-        <a id="join" title="Join Group" class="btn btn-success btn-fab btn-raised mdi-social-person-add btn-action">
-        </a>
+
         <div class="row">
             {{#each members.members}}
-            <div class="col-xs-1">{{> avatar size='small' type='circle' user=_id}}</div>
+            <div class="col-xs-1">{{> avatar size='small' type='circle' userId=_id}}</div>
             {{/each}}
         </div>
     </div>

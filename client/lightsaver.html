@@ -38,6 +38,11 @@
                     {{> avatar size='small' type='circle' user=currentUser}}
                 </a>
             </li>
+            <li>
+                <a href="#">
+                    <i class="mdi-image-wb-incandescent"></i><span class="score">{{#if currentUser.profile.score}} {{currentUser.profile.score}} {{else}}0{{/if}} </span>
+                </a>
+            </li>
         </ul>
     </div>
 </template>

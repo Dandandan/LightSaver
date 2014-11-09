@@ -1,12 +1,11 @@
 Template.group.events({
     'click #join': function (e) {
         e.preventDefault();
-        console.log(this);
         Members.update(this.group._id, {
             $addToSet: {
-                members: [{
+                members: {
                     _id: Meteor.userId()
-                }]
+                }
             }
         }, {
             upsert: true
@@ -16,6 +15,7 @@ Template.group.events({
 });
 
 Router.route('/group/:_id', function () {
+    Meteor.subscribe("userData");
     this.render('group', {
         data: function () {
             return {

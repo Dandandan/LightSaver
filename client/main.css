@@ -31,3 +31,12 @@ ul.navbar-nav {
 .btn-action {
     float:right;
 }
+i.mdi-image-wb-incandescent {
+    margin-top:-5px;
+    display:block;
+}
+.score {
+font-size: 1.1em;
+margin-top: -4px;
+display: block;
+}
