@@ -35041,3 +35041,8 @@ profielE1A={"profiel":[{"ptype":"E1A","Datumtijd":"1-1-2014 0:00","value":"0.000
 {"ptype":"E1A","Datumtijd":"31-12-2014 23:15","value":"0.00004090"},
 {"ptype":"E1A","Datumtijd":"31-12-2014 23:30","value":"0.00004040"},
 {"ptype":"E1A","Datumtijd":"31-12-2014 23:45","value":"0.00004040"}]}
+
+profielE1A.profiel = _.map(profielE1A.profiel, function (v) {
+    v.Datumtijd = moment(v['Datumtijd'], "DD-MM-YYYY HH:mm").unix();
+    return v;
+});
